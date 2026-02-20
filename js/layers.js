@@ -31,7 +31,7 @@ addLayer("p", {
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "prestige points", // Name of prestige currency
+    resource: "test points", // Name of prestige currency
     resourceI18N: "prestige points", // Second name of the resource for internationalization (i18n) if internationalizationMod is enabled
     baseResource: "points", // Name of resource prestige is based on
     baseResourceI18N: "points", // Second name of the baseResource for internationalization (i18n) if internationalizationMod is enabled
