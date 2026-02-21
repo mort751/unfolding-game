@@ -47,7 +47,7 @@ addLayer("p", {
     },
     upgrades: {
         11: {
-            title: "00 Start",
+            title: "gotta start somewhere",
             titleI18N: "00 Start", // Second name of title for internationalization (i18n) if internationalizationMod is enabled
             description: "Gain 1 point every second.",
             descriptionI18N: "Gain 1 point every second.", // Second name of description for internationalization (i18n) if internationalizationMod is enabled
