@@ -24,7 +24,7 @@ addLayer("po", {
     microtabs:{
         tab:{
             "Points":{
-                name(){return 'Points'}, // Name of tab button
+                name(){return 'Production'}, // Name of tab button
                 content:[
                 ],
             },
@@ -32,8 +32,6 @@ addLayer("po", {
     },
     tabFormat: [
        ["display-text", function() { return getPointsDisplay() }],
-       "main-display",
-       "prestige-button",
        "blank",
        ["microtabs","tab"]
     ],
