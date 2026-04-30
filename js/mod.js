@@ -1,7 +1,7 @@
 let modInfo = {
-	name: "The ??? Table",
+	name: "Unfolding Game",
 	nameI18N: "The ??? Table",// When you enabled the internationalizationMod, this is the name in the second language
-	id: "mymod2",
+	id: "unfolding",
 	author: "nobody",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
@@ -11,7 +11,7 @@ let modInfo = {
 	changedDefaultLanguage: false,
 	// Changes the mod default language. false -> English, true -> Chinese
 
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (1), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -47,24 +47,16 @@ let VERSION = {
 
 function changelog(){
 	return i18n(`
-		<br><br><br><h1>更新日志:</h1><br>(不存在<span style='color: red'><s>剧透警告</s></span>)<br><br>
-		<span style="font-size: 17px;">
-			<h3><s>你应该自己写这个</s></h3><br><br>
-			<h3>v3.0 - 史无前例的改动</h3><br>
-				- 开发了 The Modding Table, 这何尝不是一种TMT<br>
-			<br><br>
 		`, `
-		<br><br><br><h1>ChangeLog:</h1><br>(No<span style='color: red'><s> Spoiler Warning!</s></span>)<br><br>
-		<span style="font-size: 17px;">
 			<h3><s>YOU SHOULD WRITE THIS YOURSELF</s></h3><br><br>
-			<h3>v3.0 - Unprecedented changes</h3><br>
-				- Developed The Modding Table, Which, you could say, is another form of TMT<br>
+			<h3>v1.0 Release</h3><br>
+				- Released game<br>
 			<br><br>
 	`, false)
 } 
 
 function winText(){
-	return i18n(`你暂时完成了游戏!`, `Congratulations! You have reached the end and beaten this game, but for now...`, false)
+	return i18n(`...`, `Congratulations! You have reached the end and beaten this game, but for now...`, false)
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -85,7 +77,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
+	let gain = new Decimal(0)
 	return gain
 }
 
@@ -103,7 +95,7 @@ var displayThings = [
 
 // You can write code here to easily display information in the top-left corner
 function displayThingsRes(){
-	return 'Points: '+format(player.points)+' | '
+	return 'Points: ' + format(player.points) + '<br>PP: '
 }
 
 // Determines when the game "ends"
