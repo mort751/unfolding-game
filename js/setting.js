@@ -38,7 +38,7 @@ addLayer("Setting", {
     name: "Setting",
     position: -998,
     row: 0,
-    symbol() {return i18n('设置', 'Setting', false)},
+    symbol() {return i18n('设置', 'Settings', false)},
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -55,7 +55,7 @@ addLayer("Information", {
     name: "Information",
     position: -997,
     row: 0,
-    symbol() {return i18n('信息', 'Information', false)},
+    symbol() {return i18n('信息', 'Credits', false)},
     startData() { return {
         unlocked: true,
         points: new Decimal(0),

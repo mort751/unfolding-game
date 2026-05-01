@@ -48,7 +48,7 @@ let VERSION = {
 function changelog(){
 	return i18n(`
 		`, `
-			<h3><s>YOU SHOULD WRITE THIS YOURSELF</s></h3><br><br>
+			<br><br><br><h1>Changelog</h1><br><br>
 			<h3>v1.0 Release</h3><br>
 				- Released game<br>
 			<br><br>
