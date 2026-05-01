@@ -40,9 +40,36 @@ addLayer("ach", {
     11: {
         name: "It always starts somewhere",
         tooltip: "Buy U11 once.",
-        done() { return getBuyableAmount('po', 11).gt(0)}
+        done() { return getBuyableAmount('po', 11).gt(0) }
     },
     }
+})
+
+addLayer("mil", {
+    name: "goals",
+    position: -3,
+    row: 0,
+    symbol() {return "Milestones"},
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "rgb(143, 35, 190)",
+    type: "none",
+    tooltip(){return false},
+    tabFormat: [
+        ["display-text", function() { return getPointsDisplay() }],
+        ["display-text", function() { return "<h3>You have </h3><b><h2>" + format(new Decimal(0)) + "</h2></b><h3> milestones." }], 
+        "blank",
+        "milestones",
+    ],
+    milestones: {
+    1: {
+        requirementDescription: "PM1 10 total U11's",
+        effectDescription: "blah",
+        done() { return getBuyableAmount('po', 11).gte(10) }
+    }
+    },
 })
 
 addLayer("Game", {

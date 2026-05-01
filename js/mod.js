@@ -96,7 +96,6 @@ var displayThings = [
 
 // You can write code here to easily display information in the top-left corner
 function displayThingsRes(){
-	return 'Points: ' + format(player.points) + '<br>RP: <span style="color: #17c8cf;">' + format(new Decimal("1e9e15")) + '</span><br>'
 }
 
 // Determines when the game "ends"
