@@ -1,6 +1,6 @@
 addLayer("meta", {
     name: "Meta",
-    position: -1,
+    position: -4,
     row: 0,
     symbol() {return 'Meta'}, // This appears on the layer's node. Default is the id with the first letter capitalized
     small: true,// Set to true to generate a slightly smaller layer node
@@ -15,12 +15,30 @@ addLayer("meta", {
     layerShown(){return true},// If any layer in the array is unlocked, it will returns true. Otherwise it will return false.
 	tabFormat: [
         ["display-text", function() { return getPointsDisplay() }],
-        "achievements"
     ],
 })
 
+addLayer("Achievements", {
+    name: "Achievements",
+    position: -3,
+    row: 0,
+    symbol() {return "Achievements"},
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+    color: "rgb(255, 208, 0)",
+    type: "none",
+    tooltip(){return false},
+    tabFormat: [
+        ["display-text", function() { return getPointsDisplay() }],
+        "Achievements",
+    ],
+    
+})
+
 addLayer("Game", {
-    name: "Tabs",
+    name: "Game",
     position: -1,
     row: 0,
     symbol() {return 'Game'}, // This appears on the layer's node. Default is the id with the first letter capitalized
