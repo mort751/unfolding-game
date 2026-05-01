@@ -18,7 +18,7 @@ addLayer("meta", {
     ],
 })
 
-addLayer("Achievements", {
+addLayer("ach", {
     name: "Achievements",
     position: -3,
     row: 0,
@@ -32,9 +32,17 @@ addLayer("Achievements", {
     tooltip(){return false},
     tabFormat: [
         ["display-text", function() { return getPointsDisplay() }],
-        "Achievements",
+        "blank",
+        ["display-text", function() { return "You have unlocked " + player.ach.achievements.length + " achievements" }], 
+        "achievements",
     ],
-    
+    achievements: {
+    11: {
+        name: "It always starts somewhere",
+        tooltip: "Buy U11 once.",
+        done() { return getBuyableAmount('po', 11).gt(0)}
+    },
+    }
 })
 
 addLayer("Game", {
