@@ -1,24 +1,4 @@
-addLayer("seperator1", {
-    name: "Game",
-    position: -1,
-    row: 0,
-    symbol() {return ''}, // This appears on the layer's node. Default is the id with the first letter capitalized
-    small: true,// Set to true to generate a slightly smaller layer node
-    nodeStyle: {"font-size": "15px", "height": "30px"},// Style for the layer button
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),// This currently does nothing, but it's required. (Might change later if you add mechanics to this layer.)
-    }},
-    color: "#fefefe",
-    type: "none",
-    tooltip(){return false},
-    layerShown(){return true},// If any layer in the array is unlocked, it will returns true. Otherwise it will return false.
-	tabFormat: [
-        ["display-text", function() { return getPointsDisplay() }]
-    ],
-})
-
-addLayer("seperator2", {
+addLayer("meta", {
     name: "Meta",
     position: -1,
     row: 0,
@@ -34,35 +14,16 @@ addLayer("seperator2", {
     tooltip(){return false},
     layerShown(){return true},// If any layer in the array is unlocked, it will returns true. Otherwise it will return false.
 	tabFormat: [
-        ["display-text", function() { return getPointsDisplay() }]
+        ["display-text", function() { return getPointsDisplay() }],
+        "achievements"
     ],
 })
 
-addLayer("seperator1", {
-    name: "Meta",
-    position: -1,
-    row: 0,
-    symbol() {return '↓ layer 1 ↓'}, // This appears on the layer's node. Default is the id with the first letter capitalized
-    small: true,// Set to true to generate a slightly smaller layer node
-    nodeStyle: {"font-size": "15px", "height": "30px"},// Style for the layer button
-    startData() { return {
-        unlocked: true,
-        points: new Decimal(0),// This currently does nothing, but it's required. (Might change later if you add mechanics to this layer.)
-    }},
-    color: "#fefefe",
-    type: "none",
-    tooltip(){return false},
-    layerShown(){return true},// If any layer in the array is unlocked, it will returns true. Otherwise it will return false.
-	tabFormat: [
-        ["display-text", function() { return getPointsDisplay() }]
-    ],
-})
-
-addLayer("seperator3", {
+addLayer("Game", {
     name: "Tabs",
     position: -1,
     row: 0,
-    symbol() {return 'Tabs'}, // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol() {return 'Game'}, // This appears on the layer's node. Default is the id with the first letter capitalized
     small: true,// Set to true to generate a slightly smaller layer node
     nodeStyle: {"font-size": "15px", "height": "30px"},// Style for the layer button
     startData() { return {
@@ -123,9 +84,7 @@ addLayer("po", {
         cost(x) { return new Decimal(10).mul(Decimal.pow(1.10, x.pow(1.1))) },
         display() { 
             let amount = getBuyableAmount(this.layer, this.id).add(this.free())
-            let extra = ""
-            if(this.free().gt(0)) extra = " + " + format(this.free())
-            return "Cost: " + format(this.cost()) + " points<br>Effect: +" + format(this.effect(amount)) + " > +" +  format(this.effect(amount.add(1))) + " to point production<br>Base Effect: +" + format(this.base()) + "  to point production<br>Amount: " + amount + extra
+            return "Cost: " + format(this.cost()) + " points<br>Effect: +" + format(this.effect(amount)) + " > +" +  format(this.effect(amount.add(1))) + " to point production<br>Amount: " + format(Decimal.add(amount, this.free()))
         },
         canAfford() { return player.points.gte(this.cost()) },
         buy() {
@@ -142,7 +101,8 @@ addLayer("po", {
         free() {
             let free = new Decimal(0)
             return free
-        }
+        },
+        tooltip() { return "Effect per Upgrade: +" + format(this.base()) + "  to point production<br>Free buyables: " + format(this.free()) }
     },
     }
 })
