@@ -96,7 +96,7 @@ var displayThings = [
 
 // You can write code here to easily display information in the top-left corner
 function displayThingsRes(){
-	return 'Points: ' + format(player.points) + '<br>PP: <span style="color: #00cd00;">' + format(new Decimal("1e9e15")) + '</span><br>'
+	return 'Points: ' + format(player.points) + '<br>RP: <span style="color: #17c8cf;">' + format(new Decimal("1e9e15")) + '</span><br>'
 }
 
 // Determines when the game "ends"
@@ -116,7 +116,7 @@ function getPointsDisplay(){
 	if(!(options.ch==undefined && modInfo.internationalizationMod==true)){
 		a += `<span class="overlayThing">${(i18n("你有", "You have", false))} <h2 class="overlayThing" id="Points"> ${format(player.points)}</h2> ${i18n(modInfo.pointsName, modInfo.pointsNameI18N)}</span>`
 		if(canGenPoints()){
-			a += `<br><span class="overlayThing">You are producing `+(tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OoM" + (tmp.other.oompsMag < 0 ? "^OoM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "s" : formatSmall(getPointGen()))+` Points every second.</span>`
+			a += `<br><span class="overlayThing">You are producing `+(tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OoM" + (tmp.other.oompsMag < 0 ? "^OoM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "s" : formatSmall(getPointGen()))+` Points every second</span>`
 		}
 		a += `<div style="margin-top: 3px"></div>`
 	}
